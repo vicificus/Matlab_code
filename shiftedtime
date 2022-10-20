@@ -7,8 +7,13 @@ end
 %commonly used to process time sequences
 %by default, the input array is overwritten
 
+l = length(data);
+dt = zeros(l,1);
+for i = 1:(l-1)
+    dt = data(i,1) - data(i+1,1);    
+end
+dt = abs(mean(dt));
 if data (1,1) < 0         
     minD = min(data);
     data = data - minD;
-    dt = data(1,1) - data(2,1);
 end
