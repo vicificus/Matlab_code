@@ -1,10 +1,12 @@
 function [newattdata, dopattlevel] = attlevel(p_in, data)
 
 %determining the actual level of attenuation
+
 arguments
     p_in double
     data double
 end
+
 %data size calculation
 l = length (data);
 
