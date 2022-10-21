@@ -1,16 +1,17 @@
 function [bargraph, summary] = histOPA(data)
-arguments
-    data double
-end
 
 % function for fast histogram processing
 % (specialized for processing histograms of optical areas)
 
+arguments
+    data double
+end
+
+%Plotting
 figure;
 l = length (data);
 bargraph = bar(data(:,1)*1e12, data(:,2), 'grouped');
-summary = 0;
-for i = 1:l
-    summary = summary + data(i,1)*data(i,2);
-end
 xlabel ('Pulse Integral Value, pWb');
+
+%Подсчёт размера гистограммы
+summary = sum(data(:,2));
