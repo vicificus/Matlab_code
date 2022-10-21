@@ -1,0 +1,31 @@
+function [newattdata, dopattlevel] = attlevel(p_in, data)
+
+%determining the actual level of attenuation
+arguments
+    p_in double
+    data double
+end
+%data size calculation
+l = length (data);
+
+%booking places for arrays
+att = zeros(l,1);
+
+%True ATT calculating
+for i = 1:l     
+    att(i)= 10*log10(p_in/data(i,1))-data(i,2);
+end
+    dopattlevel = round(mean(att),1);
+    trueattlvl = data(:,1)+dopattlevel;
+    newattdata = [trueattlvl(:,1) data(:,2)];
+
+%Plotting
+figure;
+set(gca, {'XDir'}, {'reverse'});
+grid on;
+hold on;
+plot (newattdata(:,1), newattdata(:,2),"DisplayName",'true ATT');
+plot (data(:,1), data(:,2), "DisplayName",'Data');
+xlabel ('Attenuation level, dB');
+ylabel ('Output Power, mW');
+hold off;
