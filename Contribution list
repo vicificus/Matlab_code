@@ -4,4 +4,7 @@ function [data, samptime] = shiftedtime(data);  % If the sequence is shifted rel
 
 function [bargraph, summary] = histOPA(data);  % Function for fast histogram processing (specialized for processing histograms of optical areas).
 
+function [newattdata, dopattlevel] = attlevel(p_in, data);  % Determining the actual level of attenuation.
+
+function error = abnpeaks(acf, lvlvalue) %Are there abnormal peaks on the autocorrelation function? Set at what delay they appear and find out their amplitude!
 
