@@ -1,0 +1,19 @@
+function error = abnpeaks(acf, lvlvalue)
+arguments
+    acf (:,1) double
+    lvlvalue double
+end
+
+%Are there abnormal peaks on the autocorrelation function?
+%Set at what delay they appear and find out their amplitude!
+
+f = findpeaks(acf);
+l = size (f,1);
+k = 1;
+for n = 1:(l-1) 
+    if f(n,1) > lvlvalue
+    error(k,2) = f(n);
+    error(k,1) = n;
+    k=k+1;
+    end
+end
