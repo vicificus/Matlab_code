@@ -1,0 +1,28 @@
+function litlink = latex_lit(length, flag_save, mask)
+arguments
+    length double
+    flag_save logical
+    mask   string
+end
+
+% Сreating a list of used literature of a given range 
+% for the LaTeX layout system
+
+litlink = strings(length,1);
+switch nargin
+    case 1
+    case 2
+for i = 1:length
+    litlink = "\bibitem{litlink"+i+"}";
+end
+    case 3
+for i = 1:length
+    litlink = "\bibitem{"+mask+i+"}";
+end
+    otherwise
+    warning('Unexpected input')
+end
+
+if flag_save == true
+    save litlinks.m litlink
+end
